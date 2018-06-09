@@ -18,8 +18,19 @@ public class MainActivity extends AppCompatActivity {
         }
         if (pw.length()<8) return false;
 
-        return true; 
+        boolean containUpper=false, containLower=false, containDigit=false, containSpecial=false;
+        for (int i = 0; i < pw.length(); i++){
+            if(Character.isDigit(pw.charAt(i)) ) containDigit = true;
+            if(Character.isLowerCase(pw.charAt(i))) containLower = true;
+            if(Character.isUpperCase(pw.charAt(i))) containUpper = true;
+            if(!Character.isDigit(pw.charAt(i)) && ! Character.isLowerCase(pw.charAt(i)) && ! Character.isUpperCase(pw.charAt(i))) containSpecial = true;
+
+        }
+        return containDigit && containUpper && containLower && containSpecial;
     }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
