@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (pw.length()<8) return false;
 
-        return true;
+        return true; 
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
