@@ -2,9 +2,12 @@ package com.example.wanlile.password_validator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public boolean strongpassword(String pw){
+    public static boolean strongpassword(String pw){
         //case insensitive
         char[] lc = {'P','A','S','S','W','O','R','D'};
         char[] uc = {'p','a','s','s','w','o','r','d'};
@@ -29,7 +32,19 @@ public class MainActivity extends AppCompatActivity {
         return containDigit && containUpper && containLower && containSpecial;
     }
 
+    public void Validate(View view) {
+        EditText inputField = findViewById(R.id.password);
+        String inputPassWord = inputField.getText().toString();
 
+        boolean isStrong = strongpassword(inputPassWord);
+        TextView outputField = findViewById(R.id.result);
+
+        String result = "";
+        if(isStrong) result = "Strong";
+        else result = "Not Strong";
+
+        outputField.setText(result);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
